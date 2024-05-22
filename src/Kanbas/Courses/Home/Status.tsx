@@ -5,7 +5,6 @@ export default function CourseStatus() {
         <button>Unpublish </button> 
         <button>Publish </button>
         <tr>
-            
         </tr>
         <tr>
         <button>Import Existing Content </button>

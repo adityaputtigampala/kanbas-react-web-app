@@ -100,10 +100,10 @@ export default function Dashboard() {
             <div>
               <a className="wd-dashboard-course-link"
                 href="#/Kanbas/Courses/1241/Home">
-                CS1241 Reading
+                CS1241 Readings
               </a>
               <p className="wd-dashboard-course-title">
-                Reading Class
+                Readings Class
               </p>
               <a href="#/Kanbas/Courses/1241/Home"> Go </a>
             </div>

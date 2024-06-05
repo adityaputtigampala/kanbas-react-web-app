@@ -35,3 +35,11 @@ body * {  font-family: Arial, Helvetica, sans-serif;  }
   .wd-assignment-link {
     flex-grow: 1; /* Makes the link take up the remaining space */
   }
+
+  #wd-css-styling-tables .table tbody tr:nth-child(odd) {
+    background-color: #aa9d9d; /* Light grey for odd rows */
+}
+
+#wd-css-styling-tables .table tbody tr:nth-child(even) {
+    background-color: #ffffff; /* White for even rows */
+}

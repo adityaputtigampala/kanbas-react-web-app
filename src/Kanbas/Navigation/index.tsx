@@ -41,7 +41,7 @@ export default function KanbasNavigation() {
                    bg-black text-center border-0">
         <FaInbox className="fs-1 text-danger" /><br />
         Inbox </a>
-        <a id="wd-Labs-link" href="#/Kanbas/Labs"
+        <a id="wd-Labs-link" href="#/Labs/Lab2"
         className="list-group-item text-white
                    bg-black text-center border-0">
         <IoMdSettings className="fs-1 text-danger" /><br />

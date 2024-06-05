@@ -2,7 +2,12 @@ import { AiOutlineDashboard } from "react-icons/ai";
 import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
+import { IoCalendarSharp } from "react-icons/io5";
+import { IoMdSettings } from "react-icons/io";
+
+
 export default function KanbasNavigation() {
+  
   return (
     <div id="wd-kanbas-navigation" className="list-group rounded-0">
       <a id="wd-neu-link" target="_blank" 
@@ -24,6 +29,21 @@ export default function KanbasNavigation() {
                    bg-black text-center border-0">
         <LiaBookSolid className="fs-1 text-danger" /><br />
         Courses </a>
+        <a id="wd-calendar-link" href="#/Kanbas/Calendar"
+        className="list-group-item text-white
+                   bg-black text-center border-0">
+        <IoCalendarSharp className="fs-1 text-danger" /><br />
+        Calendar </a>
+        <a id="wd-inbox-link" href="#/Kanbas/Inbox"
+        className="list-group-item text-white
+                   bg-black text-center border-0">
+        <FaInbox className="fs-1 text-danger" /><br />
+        Inbox </a>
+        <a id="wd-Labs-link" href="#/Kanbas/Labs"
+        className="list-group-item text-white
+                   bg-black text-center border-0">
+        <IoMdSettings className="fs-1 text-danger" /><br />
+        Labs </a>
       {/* complete styling the rest of the links */}
     </div>
 );}

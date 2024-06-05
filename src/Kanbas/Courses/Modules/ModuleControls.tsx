@@ -1,5 +1,7 @@
 import { FaPlus } from "react-icons/fa6";
 import GreenCheckmark from "./GreenCheckmark";
+import { TiCancel } from "react-icons/ti";
+
 export default function ModulesControls() {
   return (
     <div id="wd-modules-controls" className="text-nowrap">
@@ -26,6 +28,18 @@ export default function ModulesControls() {
               Publish modules only
             </a>
           </li>
+          <li>
+            <a id="wd-unpublish-all-modules-and-items" className="dropdown-item" href="#">
+              <TiCancel />
+              Unpublish all modules and items
+            </a>
+          </li>
+          <li>
+            <a id="wd-unpublish-modules-only" className="dropdown-item" href="#">
+              <TiCancel />
+              Unpublish modules only
+            </a>
+          </li>
           {/* Create two more items with IDs wd-unpublish-all-modules-and-items and
               wd-unpublish-modules-only with labels Unpublish all modules and items
               and Unpublish modules only */}
@@ -33,6 +47,14 @@ export default function ModulesControls() {
       </div>
       {/* Implement the View Progress and Collapse All buttons
           with IDs wd-view-progress and wd-collapse-all */}
+          <button id="wd-view-progress" className="btn btn-lg btn-secondary me-1 float-end">
+        
+        View Progress
+      </button>
+      <button id="wd-collapse-all" className="btn btn-lg btn-secondary float-end">
+       
+        Collapse All
+      </button>
     </div>
   );
 }

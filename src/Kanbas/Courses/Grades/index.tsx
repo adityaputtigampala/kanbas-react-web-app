@@ -6,11 +6,29 @@ import { IoDocument } from "react-icons/io5";
 import { BiSolidFileImport } from "react-icons/bi";
 import { FaFileExport } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
+import { Navigate, Route, Routes, useParams, useLocation } from "react-router";
+import { FaAlignJustify } from "react-icons/fa";
+import db from "../../Database";
+
+
 
 
 
 export default function Grades() {
-    return (
+    const { cid } = useParams();
+    const course = db.courses.find((course) => course._id === cid);
+    const { pathname } = useLocation();
+
+    const assignments = db.assignments.filter((assignment) => assignment.course == cid);
+    const enrollments = db.enrollments.filter((enrollment) => enrollment.course == cid);
+    // const users = enrollments.map(enrollment => db.users.find(user => user._id == enrollment.user));
+    /*const grade = db.grades.find(grade => grade.student === users && grade.assignment === assignmentId);*/
+
+
+        
+    ;    return (
+        
+        
         <div id="wd-css-styling-dropdowns" className="container">
              <div className="row mb-3">
                 <div className="col text-end">
@@ -77,17 +95,39 @@ export default function Grades() {
                     <thead>
                         <tr className="table-secondary">
                             <th>Student Name</th>
-                            <th>A1 SETUP out of 100</th>
-                            <th>A2 HTML out of 100</th>
-                            <th>A3 CSS out of 100</th>
+                            {assignments.map((assignment)=>(<th>{assignment.title}</th>))}
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="table-white"><td>Abi Jones</td><td><input type="text" defaultValue="100%" className="form-control" /></td><td>70%</td><td>85%</td></tr>
-                        <tr className='table-secondary'><td>Mike Tom</td><td>95%</td><td>70%</td><td>90%</td></tr>
-                        <tr className='table-white'><td>Jones Abi</td><td>90%</td><td>70%</td><td>90%</td></tr>
-                        <tr className='table-secondary'><td>Tom Mike</td><td>60%</td><td>70%</td><td>90%</td></tr>
+                                {enrollments.map((enrollment) => {
+                                const user = db.users.find((user) => user._id === enrollment.user);
+                                return (
+                    <tr>
+                        {/* TA assistance for below code */}
+                    <td>{user?.firstName} {user?.lastName}</td>
+                                    {assignments.map((assignment) => {
+                                        const grade = db.grades.find(
+                                        (grade) => grade.student === enrollment.user && grade.assignment === assignment._id);
+                                        return (<td>{grade?.grade || ""}</td>);})}
+                    </tr>);
+                                })}
                     </tbody>
+                    {/* <tbody>
+                        {users.map((user) => (
+                            <tr className= 'table-white' >
+                                <td>{user?.firstName} {user?.lastName}</td>
+                                    {assignments.map((assignment) => (
+
+                                    const grade = db.grades.find(
+                                        (grade) => grade.student===enrollments.user
+                                    )
+
+                     
+                                
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody> */}
                 </table>
             </div>
         </div>

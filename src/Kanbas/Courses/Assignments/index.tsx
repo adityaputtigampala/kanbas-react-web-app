@@ -3,61 +3,51 @@ import AssignmentControlButtons from "./AssignmentControlButtons";
 import Search from "./Search"
 import ModulesControls from "./ModuleControls";
 import Clipboard from "./Clipboard";
+import { useParams } from "react-router";
+import db from "../../../Kanbas/Database";
 
 export default function Assignments() {
-    return (
-    <div id="wd-assignments" >
-    <ModulesControls/>
-    <Search/> 
+  const { cid, aid } = useParams();
+  const modules = db.modules;
+  
+  return (
+    <div id="wd-assignments">
+      <ModulesControls/>
+      <Search/> 
       <div id="wd-assignments-title">
-      <br /><br /><br /><br />
-  <ul id="wd-assignments-title" className="list-group rounded-0">
-    <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
-      <div className="wd-title p-3 ps-2 bg-secondary">
-        <BsGripVertical className="me-2 fs-3" />
-        ASSIGNMENTS                            40% of Total
-        <AssignmentControlButtons />       
+        <br /><br /><br /><br />
+        <ul className="list-group rounded-0">
+          {db.assignments
+            .filter((assignment: any) => assignment.course === cid)
+            .map((assignment: any) => (
+              <li key={assignment.id} className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
+                <div className="wd-title p-3 ps-2 bg-secondary">
+                  <BsGripVertical className="me-2 fs-3" />
+                  ASSIGNMENTS 40% of Total
+                  <AssignmentControlButtons />       
+                </div>  
+                <ul className="wd-lessons list-group rounded-0">
+                  <li className="wd-lesson list-group-item p-3 ps-1">
+                    <Clipboard/>
+                    <a className="wd-assignment-link"
+                      href={`#/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}>
+                      {assignment.title}
+                    </a>
+                    
+                    <div id="wd-p-tag">
+                      <span className="red-text">Multiple Modules</span> | 
+                      <strong>Not available until</strong> {assignment.availabledate} | 
+                      <strong>Due</strong> {assignment.duedate} | 
+                      {assignment.Points} pts
+                    </div>
+                    <AssignmentControlButtons />
+                  </li>
+                </ul>
+              </li>
+            ))}
+        </ul>
       </div>
-      <ul className="wd-lessons list-group rounded-0">
-        <li className="wd-lesson list-group-item p-3 ps-1">
-          <Clipboard/>
-            <a className="wd-assignment-link "
-              href="#/Kanbas/Courses/1234/Assignments/123">
-              A1 - ENV + HTML
-            </a>
-            <div id="wd-p-tag">
-            <span className="red-text">Multiple Modules</span> | <strong>Not available until</strong>   May 6 at 12:00am | <strong>Due</strong> May 13 at  11:59 pm | 100 pts
-             </div>
-          <AssignmentControlButtons />        </li>
-        <li className="wd-lesson list-group-item p-3 ps-1">
-        <Clipboard/>
-
-          <a className="wd-assignment-link"
-              href="#/Kanbas/Courses/1234/Assignments/123">
-              A2 - CSS + BOOTSTRAP
-            </a>
-            <div id="wd-p-tag">
-            <span className="red-text">Multiple Modules</span> | <strong>Not available until</strong>   May 13 at 12:00am | <strong>Due</strong>  May 20 at  11:59 pm | 100 pts
-             </div>
-          <AssignmentControlButtons />        </li>
-        <li className="wd-lesson list-group-item p-3 ps-1">
-        <Clipboard/>
-
-
-        <a className="wd-assignment-link"
-              href="#/Kanbas/Courses/1234/Assignments/123">
-              A3 - JAVASCRIPT + REACT
-            </a>
-            <div id="wd-p-tag">
-            <span className="red-text">Multiple Modules</span> | <strong>Not available until</strong>   May 20 at 12:00am | <strong>Due</strong>  May 27 at  11:59 pm | 100 pts
-             </div>
-          <AssignmentControlButtons />  
-        </li>
-      </ul>
-    </li>
-      </ul>
-</div>
-</div>
-
-  );}
+    </div>
+  );
+};
   

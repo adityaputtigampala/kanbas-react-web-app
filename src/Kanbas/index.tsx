@@ -1,3 +1,4 @@
+import { Provider } from "react-redux";
 import "./styles.css";
 import Dashboard from "./Dashboard";
 import KanbasNavigation from "./Navigation";

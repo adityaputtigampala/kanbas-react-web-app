@@ -5,7 +5,9 @@ import Home from "./Home";
 import { FaAlignJustify } from "react-icons/fa";
 import { useState } from "react";
 
+
 export default function Courses({ courses }: { courses: any[] }) {
+  //comment test
   const [showCourseNavigation, setShowCourseNavigation] = useState(true);
   const { cid } = useParams();
   const course = courses.find((course) => course._id === cid);

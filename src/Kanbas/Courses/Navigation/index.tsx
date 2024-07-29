@@ -6,7 +6,7 @@ export default function CoursesNavigation() {
   const { pathname } = useLocation();
   const createNavLinkClass = ({ isActive }: { isActive: boolean }) => 
     isActive ? "list-group-item active" : "list-group-item text-danger";
-  const links = ["Home", "Modules", "Piazza", "Zoom", "Assignments", "Quizzes", "Grades"];
+  const links = ["Home", "Modules", "Piazza", "Zoom", "Assignments", "Quizzes", "Grades", "People"];
 
   return (
     <div id="wd-courses-navigation"  className="list-group fs-5 rounded-0 ">

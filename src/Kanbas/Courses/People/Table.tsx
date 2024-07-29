@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as client from "./client";
+import PeopleDetails from "./Details";
+import { Link } from "react-router-dom";
 export default function PeopleTable() {
   const [users, setUsers] = useState<any[]>([]);
   const [role, setRole] = useState("");
@@ -35,6 +37,12 @@ export default function PeopleTable() {
     <div id="wd-people-table">
         <input onChange={(e) => filterUsersByName(e.target.value)} placeholder="Search people"
              className="form-control float-start w-25 me-2 wd-filter-by-name" />
+        <PeopleDetails fetchUsers={fetchUsers} />
+      <input
+        onChange={(e) => filterUsersByName(e.target.value)}
+        placeholder="Search people"
+        className="form-control float-start w-25 me-2"
+      />
         <select value={role} onChange={(e) =>filterUsersByRole(e.target.value)}
               className="form-select float-start w-25 wd-select-role" >
         <option value="">All Roles</option>        <option value="STUDENT">Students</option>
@@ -49,9 +57,10 @@ export default function PeopleTable() {
         <tbody>
           {users.map((user: any) => (
             <tr key={user._id}>
-              <td className="wd-full-name text-nowrap">
-                <span className="wd-first-name">{user.firstName}</span>
-                <span className="wd-last-name">{user.lastName}</span>
+              <td className="text-nowrap">
+                <Link to={`/Kanbas/Courses/1234/People/${user._id}`}>
+                  {user.firstName} {user.lastName}
+                </Link>
               </td>
               <td className="wd-login-id">{user.loginId}</td>
               <td className="wd-section">{user.section}</td>

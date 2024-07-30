@@ -22,7 +22,7 @@ export default function PeopleDetails({
       fetchUsers();
       navigate(`/Kanbas/Courses/${cid}/People`);
     };
-  
+    //trigger deploy
     const navigate = useNavigate();
   const deleteUser = async (uid: string) => {
     await client.deleteUser(uid);

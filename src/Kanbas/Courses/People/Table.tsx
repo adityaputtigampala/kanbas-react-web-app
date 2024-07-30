@@ -2,7 +2,20 @@ import React, { useState, useEffect } from "react";
 import * as client from "./client";
 import PeopleDetails from "./Details";
 import { Link } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
 export default function PeopleTable() {
+    const createUser = async () => {
+        const user = await client.createUser({
+          firstName: "New",
+          lastName: `User${users.length + 1}`,
+          username: `newuser${Date.now()}`,
+          password: "password123",
+          section: "S101",
+          role: "STUDENT",
+        });
+        setUsers([...users, user]);
+      };
+    
   const [users, setUsers] = useState<any[]>([]);
   const [role, setRole] = useState("");
   const [name, setName] = useState("");
@@ -35,6 +48,10 @@ export default function PeopleTable() {
   }, []);
   return (
     <div id="wd-people-table">
+        <button onClick={createUser} className="float-end btn btn-danger wd-add-people">
+        <FaPlus className="me-2" />
+        People
+      </button>
         <input onChange={(e) => filterUsersByName(e.target.value)} placeholder="Search people"
              className="form-control float-start w-25 me-2 wd-filter-by-name" />
         <PeopleDetails fetchUsers={fetchUsers} />

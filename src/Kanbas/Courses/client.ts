@@ -21,3 +21,4 @@ export const deleteCourse = async (id: string) => {
   const response = await axios.delete(`${COURSES_API}/${id}`);
   return response.data;
 };
+
